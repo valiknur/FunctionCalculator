@@ -16,13 +16,13 @@ void Change(int size, std::vector<Foo> arr);
 template<class T>
 T Vvod(const char* string, bool(*func)(T))
 {
-	T per = 0.0f;
+	T per;
 	std::cout << string << '\n';
-	
+	do
 	{
 		std::cin >> per;
 		if (!func(per)) std::cout << "Неверный ввод\n";
-	} while (func(per));
+	} while (!func(per));
 	return per;
 }
 

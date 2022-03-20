@@ -4,6 +4,7 @@
 #include <cstdio>
 #include <SDL.h>
 #include <iostream>
+
 class CFunction
 {
 protected:
@@ -71,10 +72,10 @@ public:
 	static void FDemonstration();
 protected:
 
-	double koaph;
-	double osnow;
-	double stepKoaph;
-	double constant;
+	double koaph = 0.0;
+	double osnow = 0.0;
+	double stepKoaph = 0.0;
+	double constant = 0.0;
 
 	float FCalculate() override;
 	void FSLDVisualFunc(bool bOn) override;
@@ -107,10 +108,10 @@ class CSinusFunc : public CFunction // Синусоида
 public:
 	static void FSinusFunc();
 protected:
-	double koaph;
-	double sinKoaph;	
-	double sinConstant;
-	double constant;
+	double koaph = 0.0;
+	double sinKoaph = 0.0;
+	double sinConstant = 0.0;
+	double constant = 0.0;
 
 	float FCalculate() override;
 	void FSLDVisualFunc(bool bOn) override;
@@ -125,10 +126,10 @@ class CCosinFunc : public CFunction // Коинусоида
 public:
 	static void FCosinFunc();
 protected:
-	double koaph;
-	double cosKoaph;
-	double cosConstant;
-	double constant;
+	double koaph = 0.0;
+	double cosKoaph = 0.0;
+	double cosConstant = 0.0;
+	double constant = 0.0;
 
 	float FCalculate() override;
 	void FSLDVisualFunc(bool bOn) override;

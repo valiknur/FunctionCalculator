@@ -106,12 +106,15 @@ void CDegreePlynomial::FFindExtremum()
 }
 void CDegreePlynomial::Init()
 {
-	__super::Init();
 	size = Vvod<size_t>("¬ведите количество параметров от 1 до 9", [](size_t a) {return a>0 || a < 10; });
+	std::cout << "¬ведите значени€";
+	double delta;
 	for (size_t i = 0; i < size; i++)
 	{
-		this->arr.push_back(Vvod<double>("¬ведите значение",[](double a) {return true; }));
+		std::cin>>delta;
+		this->arr.push_back(delta);
 	}
+	__super::Init();
 }
 
 void CDegree::FDegree()

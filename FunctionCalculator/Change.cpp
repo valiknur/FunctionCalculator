@@ -24,6 +24,7 @@ void Change(int size, std::vector<Foo> arr)
 		}
 		case 13:
 		{
+			std::cout << "\033[2J\033[1;1H";
 			arr[selected].func();
 			break;
 		}
@@ -31,18 +32,6 @@ void Change(int size, std::vector<Foo> arr)
 			break;
 		}
 	} while (true);
-}
-
-float Vvod(const char* string, bool(*func)(float))
-{
-	float per = 0.0f;
-	std::cout << string << '\n';
-	do
-	{
-		std::cin >> per;
-		if (!func(per)) std::cout << "Неверный ввод\n";
-	} while (func(per));
-	return per;
 }
 
 Foo::Foo(void(*func)(), const char* string)
