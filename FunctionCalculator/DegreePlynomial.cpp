@@ -5,15 +5,6 @@ int CDegreePlynomial::FDegreePolynomial()
 {
 	CDegreePlynomial func;
 	func.Init();
-	std::cout << "Ваше уравнение:\n";
-	if (func.arr[0] != 0) std::cout << func.arr[0] << " ";
-	for (size_t i = 1; i < func.size; i++)
-	{
-		if (func.arr[i] == 0) continue;
-		std::cout << (func.arr[i] > 0 ? " + " : " - ") << abs(func.arr[i]);
-	}
-	std::cout << '\n';
-
 
 	func.FSLDVisualFunc(ON);
 	func.FOpredIntegral();
@@ -74,7 +65,7 @@ void CDegreePlynomial::Init()
 		}
 		__super::Init();
 
-		std::cout << arr[0];
+		std::cout << '\n' << arr[0];
 		for (size_t i = 1; i < size; i++)
 		{
 			std::cout << (arr[i] < 0 ? " - " : " + ") << abs(arr[i]) << "*x^" << i;

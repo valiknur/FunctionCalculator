@@ -21,4 +21,3 @@ void StartFunction()
 			{CCosinFunc::FCosinFunc,"Косинусоида"}
 		});
 }
-
