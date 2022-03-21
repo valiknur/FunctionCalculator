@@ -1,17 +1,20 @@
 #pragma once
-#include <windows.h>
-#include <cstdio>
-#include <conio.h>
-#include <iostream>
-#include <vector>
+#include "Resourse.h"
+
+#ifndef CHANGE
+
+#define CHANGE
+#define NONECLEARCONSOLE 1
+#define NONEEXIT 2
+#define CLEARCONSOLE std::cout << "\033[2J\033[1;1H"
 struct Foo
 {
-	void (*func)();
+	int (*func)();
 	const char* string;
-	Foo(void (*func)(), const char* string);
+	Foo(int (*func)(), const char* string);
 };
 
-void Change(int size, std::vector<Foo> arr);
+int Change(std::vector<Foo> arr, std::string message = "", int Keys = 0);
 
 template<class T>
 T Vvod(const char* string, bool(*func)(T))
@@ -34,3 +37,5 @@ inline void Swap(T& a, T& b)
 	a = b;
 	b = delta;
 }
+
+#endif // !CHANGE

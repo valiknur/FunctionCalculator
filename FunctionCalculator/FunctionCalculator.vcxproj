@@ -140,11 +140,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Change.h" />
+    <ClInclude Include="CosinFunc.h" />
+    <ClInclude Include="Degree.h" />
+    <ClInclude Include="DegreePlynomial.h" />
+    <ClInclude Include="Demonstration.h" />
+    <ClInclude Include="Function.h" />
+    <ClInclude Include="Logarithm.h" />
     <ClInclude Include="MyFunction.h" />
+    <ClInclude Include="Resourse.h" />
+    <ClInclude Include="SinusFunc.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Change.cpp" />
+    <ClCompile Include="CosinFunc.cpp" />
+    <ClCompile Include="Degree.cpp" />
+    <ClCompile Include="DegreePlynomial.cpp" />
+    <ClCompile Include="Demonstration.cpp" />
+    <ClCompile Include="Logarithm.cpp" />
     <ClCompile Include="MyFunction.cpp" />
+    <ClCompile Include="Function.cpp" />
+    <ClCompile Include="SinusFunc.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
