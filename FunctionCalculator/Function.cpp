@@ -1,7 +1,7 @@
 #include "Function.h"
 #include "Change.h"
 
-float CFunction::FCalculate() { return 0.0f; }
+double CFunction::FCalculate(double x) { return x; }
 void CFunction::FSLDVisualFunc(bool bOn)
 {
 	if (bOn)

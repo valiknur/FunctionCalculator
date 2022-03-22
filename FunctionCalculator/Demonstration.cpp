@@ -16,7 +16,7 @@ int CDemonstration::FDemonstration()
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
-float CDemonstration::FCalculate() { return 0.0f; }
+double CDemonstration::FCalculate(double x) { return 0.0f; }
 void CDemonstration::FSLDVisualFunc(bool bOn)
 {
 }
@@ -32,9 +32,22 @@ void CDemonstration::FFindExtremum()
 }
 void CDemonstration::Init()
 {
-	__super::Init();
+	int bYouAагрее = 0;
+	do
+	{
+		CLEARCONSOLE;
 	koaph = Vvod<double>("Введите левую границу", [](double a) {return true; });
 	osnow = Vvod<double>("Введите левую границу", [](double a) {return true; });
 	stepKoaph = Vvod<double>("Введите левую границу", [](double a) {return true; });
 	constant = Vvod<double>("Введите левую границу", [](double a) {return true; });
+	__super::Init();
+
+	bYouAагрее = Change(
+		{
+			{[]() {return 1; } ,"Да"},
+			{[]() {return 0; } ,"Нет"},
+		},
+		std::string("Вы согласны с представленными данными?"),
+		NONEEXIT | ONETIME);
+} while (bYouAагрее != 1);
 }

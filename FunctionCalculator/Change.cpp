@@ -3,12 +3,14 @@
 
 int Change(std::vector<Foo> arr, std::string message, int Keys)
 {
+	if (message[0] != '\n') std::cout << '\n';
 	if ((Keys & NONEEXIT) != NONEEXIT) arr.push_back({ []() {return 0; } ,"Назад" });
 	int selected = 0;
 	do
 	{
-		if ((Keys & NONECLEARCONSOLE) != NONECLEARCONSOLE)CLEARCONSOLE;
+		CLEARCONSOLE;
 		std::cout << message;
+		if (!message.empty() && message[message.size()-1] != '\n') std::cout << '\n';
 		for (int i = 0; i < arr.size(); i++)
 		{
 			std::cout << arr[i].string << (i == selected ? " <-" : "") << '\n';
@@ -28,6 +30,7 @@ int Change(std::vector<Foo> arr, std::string message, int Keys)
 		case 13:
 		{
 			std::cout << "\033[2J\033[1;1H";
+			if ((Keys & ONETIME) == ONETIME) return arr[selected].func();
 			arr[selected].func();
 			break;
 		}

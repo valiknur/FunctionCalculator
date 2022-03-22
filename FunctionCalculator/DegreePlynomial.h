@@ -9,7 +9,7 @@ protected:
 	size_t size = 0;
 	std::vector<double> arr;
 
-	float FCalculate() override;
+	double FCalculate(double x) override;
 	void FSLDVisualFunc(bool bOn) override;
 	void FOpredIntegral() override;
 	void FFindCor() override;

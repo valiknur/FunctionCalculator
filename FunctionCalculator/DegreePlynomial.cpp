@@ -16,7 +16,7 @@ int CDegreePlynomial::FDegreePolynomial()
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
-float CDegreePlynomial::FCalculate() { return 0.0f; }
+double CDegreePlynomial::FCalculate(double x) { return 0.0f; }
 void CDegreePlynomial::FSLDVisualFunc(bool bOn)
 {
 	if (bOn)
@@ -51,12 +51,12 @@ void CDegreePlynomial::FFindExtremum()
 }
 void CDegreePlynomial::Init()
 {
-	int bYouAагрее = false;
+	int bYouAагрее = 0;
 	do
 	{
 		CLEARCONSOLE;
 		size = Vvod<size_t>("Введите количество параметров от 1 до 9", [](size_t a) {return a > 0 || a < 10; });
-		std::cout << "Вводите " << size << " значения";
+		std::cout << "Вводите " << size << " значения\n";
 		double delta;
 		for (size_t i = 0; i < size; i++)
 		{
@@ -77,6 +77,6 @@ void CDegreePlynomial::Init()
 				{[]() {return 2; } ,"Нет"},
 			},
 			std::string("Вы согласны с представленными данными?"),
-			NONECLEARCONSOLE | NONEEXIT);
+			NONEEXIT | ONETIME);
 	} while (bYouAагрее != 2);
 }

@@ -12,16 +12,21 @@ int CDegree::FDegree()
 	func.FFindExtremum();
 
 
+	std::cout << "конец";
 	getchar();
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
-float CDegree::FCalculate() { return 0.0f; }
+double CDegree::FCalculate(double x)
+{ 
+	return koaph * pow(x, step) + constant;
+}
 void CDegree::FSLDVisualFunc(bool bOn)
 {
 }
 void CDegree::FOpredIntegral()
 {
+	koaph / (step + 1) * pow(x, step + 1) + constant * x;
 }
 void CDegree::FFindCor()
 {
@@ -31,25 +36,23 @@ void CDegree::FFindExtremum()
 }
 void CDegree::Init()
 {
-	bool bYouAагрее = false;
-	__super::Init();
+	int bYouAагрее = 0;
 	do
 	{
 		CLEARCONSOLE;
-		koaph = Vvod<double>("Введите левую границу", [](double a) {return true; });
-		step = Vvod<double>("Введите левую границу", [](double a) {return true; });
-		constant = Vvod<double>("Введите левую границу", [](double a) {return true; });
+		koaph = Vvod<double>("Введите коэфицент", [](double a) {return true; });
+		step = Vvod<double>("Введите степень", [](double a) {return true; });
+		constant = Vvod<double>("Введите константу", [](double a) {return true; });
 
 		__super::Init();
-
 		std::cout << koaph << "*x^" << step << " + " << constant;
 
 		bYouAагрее = Change(
 			{
 				{[]() {return 1; } ,"Да"},
-				{[]() {return 2; } ,"Нет"},
+				{[]() {return 2 ; } ,"Нет"},
 			},
 			std::string("Вы согласны с представленными данными?"),
-			NONECLEARCONSOLE | NONEEXIT);
+			NONEEXIT | ONETIME);
 	} while (bYouAагрее != 2);
 }

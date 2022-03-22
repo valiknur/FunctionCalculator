@@ -17,7 +17,10 @@ int CLogarithm::FLogarithm()
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
-float CLogarithm::FCalculate() { return 0.0f; }
+double CLogarithm::FCalculate(double x) 
+{
+	return 0.0;
+}
 void CLogarithm::FSLDVisualFunc(bool bOn)
 {
 }
@@ -33,8 +36,22 @@ void CLogarithm::FFindExtremum()
 }
 void CLogarithm::Init()
 {
+	int bYouAагрее = 0;
+	do
+	{
+		CLEARCONSOLE;
+	koaph = Vvod<double>("Введите коэфицент для логарифма", [](double a) {return true; });
+	koaphLog = Vvod<double>("Введите коэфицент для аргуметна", [](double a) {return true; });
+	constant = Vvod<double>("Введите константу", [](double a) {return true; });
+
 	__super::Init();
-	koaph = Vvod<double>("Введите левую границу", [](double a) {return true; });
-	koaphLog = Vvod<double>("Введите левую границу", [](double a) {return true; });
-	constant = Vvod<double>("Введите левую границу", [](double a) {return true; });
+
+	bYouAагрее = Change(
+		{
+			{[]() {return 1; } ,"Да"},
+			{[]() {return 2; } ,"Нет"},
+		},
+		std::string("Вы согласны с представленными данными?"),
+		NONEEXIT | ONETIME);
+} while (bYouAагрее != 2);
 }

@@ -4,9 +4,9 @@
 #ifndef CHANGE
 
 #define CHANGE
-#define NONECLEARCONSOLE 1
 #define NONEEXIT 2
 #define CLEARCONSOLE std::cout << "\033[2J\033[1;1H"
+#define ONETIME 4
 struct Foo
 {
 	int (*func)();

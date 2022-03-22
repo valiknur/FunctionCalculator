@@ -10,7 +10,7 @@ protected:
 	double sinConstant = 0.0;
 	double constant = 0.0;
 
-	float FCalculate() override;
+	double FCalculate(double x) override;
 	void FSLDVisualFunc(bool bOn) override;
 	void FOpredIntegral() override;
 	void FFindCor() override;
