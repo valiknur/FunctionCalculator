@@ -22,5 +22,5 @@ protected:
 	virtual void FFindCor(); // Найти корни при y=0
 	virtual void FFindExtremum(); // Найти экстремумы
 	virtual void Init();
-
+	~CFunction();
 };

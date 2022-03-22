@@ -47,7 +47,7 @@ void CDemonstration::Init()
 			{[]() {return 1; } ,"Да"},
 			{[]() {return 0; } ,"Нет"},
 		},
-		std::string("Вы согласны с представленными данными?"),
-		NONEEXIT | ONETIME);
+		NONEEXIT | ONETIME,
+		std::string("Вы согласны с представленными данными?"));
 } while (bYouAагрее != 1);
 }

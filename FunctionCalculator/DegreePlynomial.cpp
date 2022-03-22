@@ -12,11 +12,21 @@ int CDegreePlynomial::FDegreePolynomial()
 	func.FFindExtremum();
 
 
-	getchar();
+	system("pause");
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
-double CDegreePlynomial::FCalculate(double x) { return 0.0f; }
+double CDegreePlynomial::FCalculate(double x) 
+{ 
+	double summ = 0.0;
+	double dx = 1;
+	for (size_t i = 0; i < arr.size(); i++)
+	{
+		summ += arr[i] * dx;
+		dx *= x;
+	}
+	return summ; 
+}
 void CDegreePlynomial::FSLDVisualFunc(bool bOn)
 {
 	if (bOn)
@@ -52,31 +62,33 @@ void CDegreePlynomial::FFindExtremum()
 void CDegreePlynomial::Init()
 {
 	int bYouAагрее = 0;
+	std::string bigString = "";
 	do
 	{
+		bigString = "";
 		CLEARCONSOLE;
 		size = Vvod<size_t>("Введите количество параметров от 1 до 9", [](size_t a) {return a > 0 || a < 10; });
 		std::cout << "Вводите " << size << " значения\n";
 		double delta;
 		for (size_t i = 0; i < size; i++)
 		{
-			std::cin >> delta;
+			delta = Vvod<double>();
 			this->arr.push_back(delta);
 		}
 		__super::Init();
 
-		std::cout << '\n' << arr[0];
+		bigString += "\n" + std::to_string(arr[0]);
 		for (size_t i = 1; i < size; i++)
 		{
-			std::cout << (arr[i] < 0 ? " - " : " + ") << abs(arr[i]) << "*x^" << i;
+			bigString += (arr[i] < 0 ? " - " : " + ") + std::to_string(abs(arr[i])) + "*x^" + std::to_string(i);
 		}
-
+		bigString += "\nПромежуток определённого интегралла = [" + std::to_string(leftIntegr) + ";" + std::to_string(rightIntegr) + "]\n";
 		bYouAагрее = Change(
 			{
 				{[]() {return 1; } ,"Да"},
 				{[]() {return 2; } ,"Нет"},
 			},
-			std::string("Вы согласны с представленными данными?"),
-			NONEEXIT | ONETIME);
-	} while (bYouAагрее != 2);
+			NONEEXIT | ONETIME,
+			std::string(bigString + "Вы согласны с представленными данными?"));
+	} while (bYouAагрее != 1);
 }

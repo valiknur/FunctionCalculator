@@ -3,11 +3,12 @@
 #ifndef RESOURCE
 #define RESOURCE
 
+#define NOMINMAX
 #include <windows.h>
 #include <vector>
-#include <cstdio>
 #include <conio.h>
 #include <SDL.h>
 #include <iostream>
+#include <string>
 
 #endif // !RESOURCE

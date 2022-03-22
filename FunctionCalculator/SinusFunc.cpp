@@ -53,7 +53,7 @@ void CSinusFunc::Init()
 			{[]() {return 1; } ,"Да"},
 			{[]() {return 2; } ,"Нет"},
 		},
-		std::string("Вы согласны с представленными данными?"),
-		NONEEXIT | ONETIME);
+		NONEEXIT | ONETIME,
+		std::string("Вы согласны с представленными данными?"));
 } while (bYouAагрее != 2);
 }

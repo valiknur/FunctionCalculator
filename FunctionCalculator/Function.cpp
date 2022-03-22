@@ -28,3 +28,8 @@ void CFunction::Init()
 	rightIntegr = Vvod<double>("¬ведите правую границу определЄнного интеграла", [](double a) {return true; });
 	if (leftIntegr > rightIntegr) Swap(leftIntegr, rightIntegr);
 }
+
+CFunction::~CFunction()
+{
+	if (wind != NULL) SDL_DestroyWindow(wind);
+}

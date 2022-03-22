@@ -1,12 +1,12 @@
 #pragma once
 #include "Resourse.h"
-
 #ifndef CHANGE
 
 #define CHANGE
 #define NONEEXIT 2
-#define CLEARCONSOLE std::cout << "\033[2J\033[1;1H"
 #define ONETIME 4
+#define FIRSTPAUSE 8
+#define CLEARCONSOLE std::cout << "\033[2J\033[1;1H"
 struct Foo
 {
 	int (*func)();
@@ -14,16 +14,22 @@ struct Foo
 	Foo(int (*func)(), const char* string);
 };
 
-int Change(std::vector<Foo> arr, std::string message = "", int Keys = 0);
+int Change(std::vector<Foo> arr, int Keys = 0, std::string message = "");
 
 template<class T>
-T Vvod(const char* string, bool(*func)(T))
+T Vvod(const char* string = "", bool(*func)(T) = [](T) {return true; })
 {
 	T per;
 	std::cout << string << '\n';
 	do
 	{
-		std::cin >> per;
+		if (!(std::cin >> per))
+		{
+			std::cin.clear();
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			std::cout << "Неверный ввод\n";
+			continue;
+		}
 		if (!func(per)) std::cout << "Неверный ввод\n";
 	} while (!func(per));
 	return per;

@@ -23,10 +23,12 @@ double CDegree::FCalculate(double x)
 }
 void CDegree::FSLDVisualFunc(bool bOn)
 {
+
 }
 void CDegree::FOpredIntegral()
 {
-	koaph / (step + 1) * pow(x, step + 1) + constant * x;
+	std::cout <<	koaph / (step + 1) * pow(rightIntegr, step + 1) + constant * rightIntegr -
+					koaph / (step + 1) * pow(leftIntegr, step + 1) + constant * leftIntegr;
 }
 void CDegree::FFindCor()
 {
@@ -52,7 +54,7 @@ void CDegree::Init()
 				{[]() {return 1; } ,"Да"},
 				{[]() {return 2 ; } ,"Нет"},
 			},
-			std::string("Вы согласны с представленными данными?"),
-			NONEEXIT | ONETIME);
+			NONEEXIT | ONETIME | FIRSTPAUSE,
+			std::string("Вы согласны с представленными данными?"));
 	} while (bYouAагрее != 2);
 }
