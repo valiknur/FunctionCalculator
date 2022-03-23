@@ -6,7 +6,7 @@
 #define NONEEXIT 2
 #define ONETIME 4
 #define FIRSTPAUSE 8
-#define CLEARCONSOLE std::cout << "\033[2J\033[1;1H"
+#define CLEARCONSOLE system("cls")//std::cout << "\033[2J\033[1;1H"
 struct Foo
 {
 	int (*func)();
@@ -20,18 +20,21 @@ template<class T>
 T Vvod(const char* string = "", bool(*func)(T) = [](T) {return true; })
 {
 	T per;
+	bool repeat = false;
 	std::cout << string << '\n';
 	do
 	{
+		repeat = false;
 		if (!(std::cin >> per))
 		{
 			std::cin.clear();
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			std::cout << "Неверный ввод\n";
+			repeat = true;
 			continue;
 		}
 		if (!func(per)) std::cout << "Неверный ввод\n";
-	} while (!func(per));
+	} while (!func(per) || repeat);
 	return per;
 }
 

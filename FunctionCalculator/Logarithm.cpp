@@ -1,6 +1,7 @@
 #include "Logarithm.h"
 #include "Change.h"
 
+#define LN log()
 int CLogarithm::FLogarithm()
 {
 	CLogarithm func;
@@ -40,18 +41,18 @@ void CLogarithm::Init()
 	do
 	{
 		CLEARCONSOLE;
-	koaph = Vvod<double>("Введите коэфицент для логарифма", [](double a) {return true; });
-	koaphLog = Vvod<double>("Введите коэфицент для аргуметна", [](double a) {return true; });
-	constant = Vvod<double>("Введите константу", [](double a) {return true; });
+		koaph = Vvod<double>("Введите коэфицент для логарифма", [](double a) {return true; });
+		koaphLog = Vvod<double>("Введите коэфицент для аргуметна", [](double a) {return true; });
+		constant = Vvod<double>("Введите константу", [](double a) {return true; });
 
-	__super::Init();
+		__super::Init();
 
-	bYouAагрее = Change(
-		{
-			{[]() {return 1; } ,"Да"},
-			{[]() {return 2; } ,"Нет"},
-		},
-		NONEEXIT | ONETIME,
-		std::string("Вы согласны с представленными данными?"));
-} while (bYouAагрее != 2);
-}
+		bYouAагрее = Change(
+			{
+				{[]() {return 1; } ,"Да"},
+				{[]() {return 0; } ,"Нет"},
+			},
+			NONEEXIT | ONETIME,
+			std::string("Вы согласны с представленными данными?"));
+	} while (bYouAагрее != 1);
+};

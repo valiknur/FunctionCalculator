@@ -13,7 +13,7 @@ int CDegree::FDegree()
 
 
 	std::cout << "конец";
-	getchar();
+	system("pause");
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
@@ -38,6 +38,7 @@ void CDegree::FFindExtremum()
 }
 void CDegree::Init()
 {
+	std::string bigString = "";
 	int bYouAагрее = 0;
 	do
 	{
@@ -48,13 +49,15 @@ void CDegree::Init()
 
 		__super::Init();
 		std::cout << koaph << "*x^" << step << " + " << constant;
-
+		bigString = std::to_string(koaph) + "*x^" + std::to_string(step) + " + " + std::to_string(constant);
+		bigString += "\nПромежуток определённого интегралла = [" + std::to_string(leftIntegr) + ";" + std::to_string(rightIntegr) + "]\n";
 		bYouAагрее = Change(
 			{
 				{[]() {return 1; } ,"Да"},
-				{[]() {return 2 ; } ,"Нет"},
+				{[]() {return 0; } ,"Нет"},
 			},
-			NONEEXIT | ONETIME | FIRSTPAUSE,
-			std::string("Вы согласны с представленными данными?"));
-	} while (bYouAагрее != 2);
+			NONEEXIT | ONETIME,
+			std::string(bigString + "Вы согласны с представленными данными?"));
+	} while (bYouAагрее != 1);
+	std::cout << bigString;
 }
