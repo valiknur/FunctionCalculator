@@ -23,6 +23,8 @@ double CSinusFunc::FCalculate(double x)
 }
 void CSinusFunc::FSLDVisualFunc(bool bOn)
 {
+	__super::FSLDVisualFunc(bOn);
+
 }
 void CSinusFunc::FOpredIntegral()
 {
@@ -39,14 +41,17 @@ void CSinusFunc::FFindCor()
 	}
 	if (abs(sinKoaph) < abs(koaph))
 	{
-		std::cout << "\nКорни: " << asin(constant / koaph) / sinKoaph << "+2*pi*k\n";
+		std::cout << "\nКорни: " << asin(-constant / koaph) / sinKoaph - sinConstant << "+2*pi*k\n";
 		return;
 	}
-	std::cout << "\nКорни: " << asin(constant / koaph) / sinKoaph << "+2*pi*k и " << (M_PI - asin(constant / koaph)) / sinKoaph << "+2*pi*k\n";
+	std::cout << "\nКорни: " << (asin(-constant / koaph) - sinConstant) / sinKoaph << "+" << 2 / sinKoaph << "*pi*k и "
+					 << ((M_PI - asin(-constant / koaph)) - sinConstant) / sinKoaph << "+" << 2 / sinKoaph << "*pi*k\n";
 }
 void CSinusFunc::FFindExtremum()
 {
-	std::cout << "\nКорни: " << asin(constant / koaph) / sinKoaph << "+2*pi*k и " << (M_PI - asin(constant / koaph)) / sinKoaph << "+2*pi*k\n";
+	std::cout << "\nэкстремумы:";
+	std::cout << "\nмаксимум: " << sinKoaph * M_PI / 2 - sinConstant << "+" << 2 / sinKoaph << "*pi*k\n";
+	std::cout << "\nминимум: " << (-sinKoaph) * M_PI / 2 - sinConstant << "+" << 2 / sinKoaph << "*pi*k\n";
 }
 void CSinusFunc::Init()
 {
@@ -54,19 +59,27 @@ void CSinusFunc::Init()
 	do
 	{
 		CLEARCONSOLE;
-	koaph = Vvod<double>("Введите коэфицент для синуса", [](double a) {return true; });
-	sinKoaph = Vvod<double>("Введите коэфицент для аргумента", [](double a) {return true; });
-	sinConstant = Vvod<double>("Введите константу для аргумента", [](double a) {return true; });
-	constant = Vvod<double>("Введите константу для функции", [](double a) {return true; });
+		koaph = Vvod<double>("Введите коэфицент для синуса (не нуль)", [](double a) {return a != 0; });
+		sinKoaph = Vvod<double>("Введите коэфицент для аргумента (не нуль)", [](double a) {return a != 0; });
+		sinConstant = Vvod<double>("Введите константу для аргумента ", [](double a) {return true; });
+		constant = Vvod<double>("Введите константу для функции", [](double a) {return true; });
 
-	__super::Init();
+		__super::Init();
 
-	bYouAагрее = Change(
-		{
-			{[]() {return 1; } ,"Да"},
-			{[]() {return 2; } ,"Нет"},
-		},
-		NONEEXIT | ONETIME,
-		std::string("Вы согласны с представленными данными?"));
-} while (bYouAагрее != 2);
+		bYouAагрее = Change(
+			{
+				{[]() {return 1; } ,"Да"},
+				{[]() {return 2; } ,"Нет"},
+			},
+			NONEEXIT | ONETIME,
+			std::string("Вы согласны с представленными данными?"));
+	} while (bYouAагрее != 2);
+	if (sinConstant > 0) sinConstant -= int(abs(sinConstant) / M_PI) * M_PI;
+	else sinConstant += int(abs(sinConstant) / M_PI) * M_PI + M_PI;
+	if (koaph < 0 || sinKoaph < 0)
+	{
+		if (koaph < 0 != sinKoaph < 0)sinConstant = M_PI - sinConstant;
+			koaph = abs(koaph);
+			sinKoaph = abs(sinKoaph);
+	}
 }

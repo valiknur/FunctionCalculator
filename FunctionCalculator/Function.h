@@ -10,6 +10,7 @@ protected:
 	};
 	SDL_Window* wind = NULL;
 	SDL_Surface* pictures = NULL;
+	SDL_Renderer* renderer = NULL;
 	int x = 0;
 	int y = 0;
 	int width = 0;
