@@ -1,15 +1,13 @@
 #include "MyFunction.h"
 #include "Change.h"
 
-int main(int argc, char* args[])
-{
-	setlocale(0, "");
-	std::cout << "\033[2J\033[1;1H";
-	StartFunction();
-	return 0;
-}
-
-void StartFunction()
+#include "DegreePlynomial.h"
+#include "Degree.h"
+#include "Demonstration.h"
+#include "Logarithm.h"
+#include "SinusFunc.h"
+#include "CosinFunc.h"
+int StartFunction()
 {
 	Change(
 		{
@@ -20,4 +18,5 @@ void StartFunction()
 			{CSinusFunc::FSinusFunc,"Синусоида"},
 			{CCosinFunc::FCosinFunc,"Косинусоида"}
 		});
+	return 0;
 }

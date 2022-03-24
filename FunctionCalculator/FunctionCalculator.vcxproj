@@ -145,10 +145,14 @@
     <ClInclude Include="DegreePlynomial.h" />
     <ClInclude Include="Demonstration.h" />
     <ClInclude Include="Function.h" />
+    <ClInclude Include="MatrixCalc.h" />
     <ClInclude Include="Logarithm.h" />
+    <ClInclude Include="Mnogochleni.h" />
     <ClInclude Include="MyFunction.h" />
     <ClInclude Include="Resourse.h" />
+    <ClInclude Include="simplefractions.h" />
     <ClInclude Include="SinusFunc.h" />
+    <ClInclude Include="theor_prob.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Change.cpp" />
@@ -157,9 +161,14 @@
     <ClCompile Include="DegreePlynomial.cpp" />
     <ClCompile Include="Demonstration.cpp" />
     <ClCompile Include="Logarithm.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="MatrixCalc.cpp" />
+    <ClCompile Include="Mnogochleni.cpp" />
     <ClCompile Include="MyFunction.cpp" />
     <ClCompile Include="Function.cpp" />
+    <ClCompile Include="simplefractions.cpp" />
     <ClCompile Include="SinusFunc.cpp" />
+    <ClCompile Include="theor_prob.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
