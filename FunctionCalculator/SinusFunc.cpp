@@ -19,21 +19,22 @@ int CSinusFunc::FSinusFunc()
 }
 double CSinusFunc::FCalculate(double x)
 {
-	return 0.0f;koaph * sin(sinKoaph * x + sinConstant) + constant;
+	return koaph * sin(sinKoaph * x + sinConstant) + constant;
 }
 void CSinusFunc::FSLDVisualFunc(bool bOn)
 {
 }
 void CSinusFunc::FOpredIntegral()
 {
-	koaph * sinKoaph * cos(sinKoaph * x + sinConstant) + constant * x;
 	__super::FOpredIntegral();
+	std::cout << koaph * sinKoaph * cos(sinKoaph * rightIntegr + sinConstant) + constant * rightIntegr - koaph * sinKoaph * cos(sinKoaph * leftIntegr + sinConstant) + constant * leftIntegr << '\n';
 }
 void CSinusFunc::FFindCor()
 {
 }
 void CSinusFunc::FFindExtremum()
 {
+
 }
 void CSinusFunc::Init()
 {
