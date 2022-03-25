@@ -23,18 +23,21 @@ double CDegree::FCalculate(double x)
 }
 void CDegree::FSLDVisualFunc(bool bOn)
 {
-
+	__super::FSLDVisualFunc(bOn);
 }
 void CDegree::FOpredIntegral()
 {
+	__super::FOpredIntegral();
 	std::cout <<	koaph / (step + 1) * pow(rightIntegr, step + 1) + constant * rightIntegr -
 					koaph / (step + 1) * pow(leftIntegr, step + 1) + constant * leftIntegr;
 }
 void CDegree::FFindCor()
 {
+	std::cout << "\nкорень=" << pow(constant, 1 / step) << '\n';
 }
 void CDegree::FFindExtremum()
 {
+	std::cout << "\nэкстремум в точке 0\n";
 }
 void CDegree::Init()
 {
@@ -43,8 +46,8 @@ void CDegree::Init()
 	do
 	{
 		CLEARCONSOLE;
-		koaph = Vvod<double>("¬ведите коэфицент", [](double a) {return true; });
-		step = Vvod<double>("¬ведите степень", [](double a) {return true; });
+		koaph = Vvod<double>("¬ведите коэфицент (не нуль)", [](double a) {return a != 0; });
+		step = Vvod<double>("¬ведите степень (не нуль)", [](double a) {return a != 0; });
 		constant = Vvod<double>("¬ведите константу", [](double a) {return true; });
 
 		__super::Init();
