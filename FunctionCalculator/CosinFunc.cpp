@@ -25,7 +25,6 @@ double CCosinFunc::FCalculate(double x)
 void CCosinFunc::FSLDVisualFunc(bool bOn)
 {
 	__super::FSLDVisualFunc(bOn);
-
 }
 
 void CCosinFunc::FOpredIntegral()

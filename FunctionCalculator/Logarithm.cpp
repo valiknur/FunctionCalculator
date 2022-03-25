@@ -24,6 +24,7 @@ double CLogarithm::FCalculate(double x)
 }
 void CLogarithm::FSLDVisualFunc(bool bOn)
 {
+	__super::FSLDVisualFunc(bOn);
 }
 void CLogarithm::FOpredIntegral()
 {
@@ -31,9 +32,11 @@ void CLogarithm::FOpredIntegral()
 }
 void CLogarithm::FFindCor()
 {
+
 }
 void CLogarithm::FFindExtremum()
 {
+
 }
 void CLogarithm::Init()
 {
@@ -41,7 +44,7 @@ void CLogarithm::Init()
 	do
 	{
 		CLEARCONSOLE;
-		koaph = Vvod<double>("Введите коэфицент для логарифма", [](double a) {return true; });
+		koaph = Vvod<double>("Введите коэфицент для логарифма (не нуль)", [](double a) {return a!=0; });
 		koaphLog = Vvod<double>("Введите коэфицент для аргуметна", [](double a) {return true; });
 		constant = Vvod<double>("Введите константу", [](double a) {return true; });
 
