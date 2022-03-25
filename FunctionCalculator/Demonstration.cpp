@@ -36,10 +36,10 @@ void CDemonstration::Init()
 	do
 	{
 		CLEARCONSOLE;
-		koaph = Vvod<double>("¬ведите левую границу", [](double a) {return true; });
-		osnow = Vvod<double>("¬ведите левую границу", [](double a) {return true; });
-		stepKoaph = Vvod<double>("¬ведите левую границу", [](double a) {return true; });
-		constant = Vvod<double>("¬ведите левую границу", [](double a) {return true; });
+		koaph = Vvod<double>("¬ведите коэфицент", [](double a) {return a>0; });
+		osnow = Vvod<double>("¬ведите основу", [](double a) {return a>0; });
+		stepKoaph = Vvod<double>("¬ведите коэфицент степени", [](double a) {return a!=0; });
+		constant = Vvod<double>("¬ведите константу", [](double a) {return true; });
 		__super::Init();
 
 		bYouAагрее = Change(

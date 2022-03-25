@@ -23,18 +23,21 @@ double CDegree::FCalculate(double x)
 }
 void CDegree::FSLDVisualFunc(bool bOn)
 {
-
+	__super::FSLDVisualFunc(bOn);
 }
 void CDegree::FOpredIntegral()
 {
+	__super::FOpredIntegral();
 	std::cout <<	koaph / (step + 1) * pow(rightIntegr, step + 1) + constant * rightIntegr -
 					koaph / (step + 1) * pow(leftIntegr, step + 1) + constant * leftIntegr;
 }
 void CDegree::FFindCor()
 {
+	std::cout << "корень=" << pow(constant, 1 / step) << '\n';
 }
 void CDegree::FFindExtremum()
 {
+	
 }
 void CDegree::Init()
 {

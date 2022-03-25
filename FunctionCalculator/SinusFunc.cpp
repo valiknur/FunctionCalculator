@@ -29,8 +29,8 @@ void CSinusFunc::FSLDVisualFunc(bool bOn)
 void CSinusFunc::FOpredIntegral()
 {
 	__super::FOpredIntegral();
-	std::cout <<  koaph * sinKoaph * cos(sinKoaph * rightIntegr + sinConstant) + constant * rightIntegr
-				- koaph * sinKoaph * cos(sinKoaph * leftIntegr + sinConstant) + constant * leftIntegr << '\n';
+	std::cout << - koaph * sinKoaph * cos(sinKoaph * rightIntegr + sinConstant) + constant * rightIntegr
+				 + koaph * sinKoaph * cos(sinKoaph * leftIntegr + sinConstant) + constant * leftIntegr << '\n';
 }
 void CSinusFunc::FFindCor()
 {
@@ -50,7 +50,7 @@ void CSinusFunc::FFindCor()
 void CSinusFunc::FFindExtremum()
 {
 	std::cout << "\nэкстремумы:";
-	std::cout << "\nмаксимум: " << sinKoaph * M_PI / 2 - sinConstant << "+" << 2 / sinKoaph << "*pi*k\n";
+	std::cout << "\nмаксимум: " << sinKoaph * M_PI / 2 - sinConstant << "+" << 2 / sinKoaph << "*pi*k";
 	std::cout << "\nминимум: " << (-sinKoaph) * M_PI / 2 - sinConstant << "+" << 2 / sinKoaph << "*pi*k\n";
 }
 void CSinusFunc::Init()
