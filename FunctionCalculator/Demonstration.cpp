@@ -28,6 +28,8 @@ void CDemonstration::FSLDVisualFunc(bool bOn)
 void CDemonstration::FOpredIntegral()
 {
 	__super::FOpredIntegral();
+	std::cout << koaph * pow(pow(osnow, stepKoaph), rightIntegr) / stepKoaph / log(osnow) + constant * rightIntegr
+		- koaph * pow(pow(osnow, stepKoaph), leftIntegr) / stepKoaph / log(osnow) - constant * leftIntegr;
 }
 void CDemonstration::FFindCor()
 {

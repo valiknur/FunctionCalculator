@@ -7,7 +7,6 @@ int CLogarithm::FLogarithm()
 	CLogarithm func;
 	func.Init();
 
-
 	func.FSLDVisualFunc(ON);
 	func.FOpredIntegral();
 	func.FFindCor();

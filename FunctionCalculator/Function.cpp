@@ -43,7 +43,7 @@ void CFunction::FSLDVisualFunc(bool bOn)
 }
 void CFunction::FOpredIntegral()
 {
-	std::cout << "Значение определённого интегралла:";
+	std::cout << "\nЗначение определённого интегралла:\n";
 }
 void CFunction::FFindCor() {}
 void CFunction::FFindExtremum() {}
