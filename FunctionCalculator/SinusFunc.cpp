@@ -13,13 +13,14 @@ int CSinusFunc::FSinusFunc()
 	func.FFindExtremum();
 
 
-	getchar();
+	std::cout << "конец";
+	system("pause");
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
 double CSinusFunc::FCalculate(double x)
 {
-	return koaph * sin(sinKoaph * x + sinConstant) + constant;
+	return -(koaph * sin(sinKoaph * x + sinConstant) + constant);
 }
 void CSinusFunc::FSLDVisualFunc(bool bOn)
 {
@@ -29,17 +30,17 @@ void CSinusFunc::FSLDVisualFunc(bool bOn)
 void CSinusFunc::FOpredIntegral()
 {
 	__super::FOpredIntegral();
-	std::cout << - koaph * sinKoaph * cos(sinKoaph * rightIntegr + sinConstant) + constant * rightIntegr
+	std::cout << - koaph * sinKoaph * cos(sinKoaph * rightIntegr + sinConstant) - constant * rightIntegr
 				 + koaph * sinKoaph * cos(sinKoaph * leftIntegr + sinConstant) + constant * leftIntegr << '\n';
 }
 void CSinusFunc::FFindCor()
 {
-	if (abs(sinKoaph) < abs(koaph))
+	if (abs(constant) < abs(koaph))
 	{
 		std::cout << "\nКорней нет\n";
 		return;
 	}
-	if (abs(sinKoaph) < abs(koaph))
+	if (abs(constant) == abs(koaph))
 	{
 		std::cout << "\nКорни: " << asin(-constant / koaph) / sinKoaph - sinConstant << "+2*pi*k\n";
 		return;
@@ -55,6 +56,7 @@ void CSinusFunc::FFindExtremum()
 }
 void CSinusFunc::Init()
 {
+	std::string bigString;
 	int bYouAагрее = 0;
 	do
 	{
@@ -65,15 +67,16 @@ void CSinusFunc::Init()
 		constant = Vvod<double>("Введите константу для функции", [](double a) {return true; });
 
 		__super::Init();
-
+		bigString = std::to_string(koaph) + "cin(" + std::to_string(sinKoaph) + "x+" + std::to_string(sinConstant) + ")" + std::to_string(constant) + '\n';
+		bigString += "\nПромежуток определённого интегралла = [" + std::to_string(leftIntegr) + ";" + std::to_string(rightIntegr) + "]\n";
 		bYouAагрее = Change(
 			{
 				{[]() {return 1; } ,"Да"},
-				{[]() {return 2; } ,"Нет"},
+				{[]() {return 0; } ,"Нет"},
 			},
 			NONEEXIT | ONETIME,
-			std::string("Вы согласны с представленными данными?"));
-	} while (bYouAагрее != 2);
+			std::string(bigString + "Вы согласны с представленными данными?"));
+	} while (bYouAагрее != 1);
 	if (sinConstant > 0) sinConstant -= int(abs(sinConstant) / M_PI) * M_PI;
 	else sinConstant += int(abs(sinConstant) / M_PI) * M_PI + M_PI;
 	if (koaph < 0 || sinKoaph < 0)

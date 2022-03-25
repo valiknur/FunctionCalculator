@@ -16,14 +16,18 @@ void CFunction::FSLDVisualFunc(bool bOn)
 								800,
 								NULL);
 		renderer = SDL_CreateRenderer(wind, -1, 0);
-		double xC, yC;
-		int xP, yP;
+		SDL_SetRenderDrawColor(renderer, 255, 255, 255, 0);
+		SDL_RenderClear(renderer);
+		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+		SDL_RenderDrawLine(renderer, 0, 400, 1000, 400);
+		SDL_RenderDrawLine(renderer, 500, 0, 500, 800);
 		for (int i = 0; i < 1000; i++)
 		{
 			arr[i] = { i,int(400 - 50 * FCalculate(-10 + 0.02 * i)) };
 		}
-		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+		SDL_SetRenderDrawColor(renderer, 200, 0, 0, 0);
 		SDL_RenderDrawLines(renderer, arr, 1000);
+		SDL_RenderPresent(renderer);
 	}
 	else
 	{

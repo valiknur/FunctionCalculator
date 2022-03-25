@@ -14,6 +14,7 @@ int CDegreePlynomial::FDegreePolynomial()
 	func.FFindExtremum();
 
 
+	std::cout << "конец";
 	system("pause");
 	func.FSLDVisualFunc(OFF);
 	return 0;
@@ -103,7 +104,7 @@ void CDegreePlynomial::Init()
 		bYouAагрее = Change(
 			{
 				{[]() {return 1; } ,"Да"},
-				{[]() {return 2; } ,"Нет"},
+				{[]() {return 0; } ,"Нет"},
 			},
 			NONEEXIT | ONETIME,
 			std::string(bigString + "Вы согласны с представленными данными?"));

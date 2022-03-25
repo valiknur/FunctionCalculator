@@ -33,11 +33,11 @@ void CDegree::FOpredIntegral()
 }
 void CDegree::FFindCor()
 {
-	std::cout << "корень=" << pow(constant, 1 / step) << '\n';
+	std::cout << "\nкорень=" << pow(constant, 1 / step) << '\n';
 }
 void CDegree::FFindExtremum()
 {
-	
+	std::cout << "\nэкстремум в точке 0\n";
 }
 void CDegree::Init()
 {
@@ -46,8 +46,8 @@ void CDegree::Init()
 	do
 	{
 		CLEARCONSOLE;
-		koaph = Vvod<double>("¬ведите коэфицент", [](double a) {return true; });
-		step = Vvod<double>("¬ведите степень", [](double a) {return true; });
+		koaph = Vvod<double>("¬ведите коэфицент (не нуль)", [](double a) {return a != 0; });
+		step = Vvod<double>("¬ведите степень (не нуль)", [](double a) {return a != 0; });
 		constant = Vvod<double>("¬ведите константу", [](double a) {return true; });
 
 		__super::Init();

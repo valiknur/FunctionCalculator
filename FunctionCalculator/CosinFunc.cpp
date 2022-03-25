@@ -13,13 +13,14 @@ int CCosinFunc::FCosinFunc()
 	func.FFindExtremum();
 
 
-	getchar();
+	std::cout << "конец";
+	system("pause");
 	func.FSLDVisualFunc(OFF);
 	return 0;
 }
 double CCosinFunc::FCalculate(double x)
 { 
-	return koaph * cos(cosKoaph * x + cosConstant) + constant;
+	return -(koaph * cos(cosKoaph * x + cosConstant) + constant);
 }
 
 void CCosinFunc::FSLDVisualFunc(bool bOn)
@@ -31,7 +32,7 @@ void CCosinFunc::FOpredIntegral()
 {
 	__super::FOpredIntegral();
 	std::cout << koaph * cosKoaph * sin(cosKoaph * rightIntegr + cosConstant) + constant * rightIntegr
-		- koaph * cosKoaph * sin(cosKoaph * leftIntegr + cosConstant) + constant * leftIntegr << '\n';
+		- koaph * cosKoaph * sin(cosKoaph * leftIntegr + cosConstant) - constant * leftIntegr << '\n';
 }
 void CCosinFunc::FFindCor()
 {
@@ -56,25 +57,27 @@ void CCosinFunc::FFindExtremum()
 }
 void CCosinFunc::Init()
 {
+	std::string bigString;
 	int bYouAагрее = 0;
 	do
 	{
 		CLEARCONSOLE;
-		koaph = Vvod<double>("Введите коэфицент для косинуса", [](double a) {return true; });
-		cosKoaph = Vvod<double>("Введите коэфицент для аргумента", [](double a) {return true; });
+		koaph = Vvod<double>("Введите коэфицент для косинуса (не нуль)", [](double a) {return a!=0; });
+		cosKoaph = Vvod<double>("Введите коэфицент для аргумента (не нуль)", [](double a) {return a!=0; });
 		cosConstant = Vvod<double>("Введите константу для аргумента",[](double a) {return true; });
 		constant = Vvod<double>("Введите константу для функции", [](double a) {return true; });
 
 		__super::Init();
-
+		bigString = std::to_string(koaph) + "cin(" + std::to_string(cosKoaph) + "x+" + std::to_string(cosConstant) + ")" + std::to_string(constant) + '\n';
+		bigString += "\nПромежуток определённого интегралла = [" + std::to_string(leftIntegr) + ";" + std::to_string(rightIntegr) + "]\n";
 		bYouAагрее = Change(
 			{
 				{[]() {return 1; } ,"Да"},
-				{[]() {return 2; } ,"Нет"},
+				{[]() {return 0; } ,"Нет"},
 			},
 			NONEEXIT | ONETIME,
-			std::string("Вы согласны с представленными данными?"));
-	} while (bYouAагрее != 2);
+			std::string(bigString + "Вы согласны с представленными данными?"));
+	} while (bYouAагрее != 1);
 	if (cosConstant > 0) cosConstant -= int(abs(cosConstant) / M_PI) * M_PI;
 	else cosConstant += int(abs(cosConstant) / M_PI) * M_PI + M_PI;
 	if (koaph < 0 || cosKoaph < 0)
