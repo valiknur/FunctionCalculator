@@ -36,12 +36,12 @@ void CCosinFunc::FOpredIntegral()
 }
 void CCosinFunc::FFindCor()
 {
-	if (abs(cosKoaph) < abs(koaph))
+	if (abs(koaph) < abs(constant))
 	{
 		std::cout << "\nКорней нет\n";
 		return;
 	}
-	if (abs(cosKoaph) < abs(koaph))
+	if (abs(koaph) == abs(constant))
 	{
 		std::cout << "\nКорни: " << acos(-constant / koaph) / cosKoaph - cosConstant << "+2*pi*k\n";
 		return;
