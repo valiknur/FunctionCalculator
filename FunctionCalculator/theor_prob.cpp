@@ -158,5 +158,5 @@ int Theor_prob()
 			ONETIME
 			);
 	} while (menu_choise != 0);
-	return 0;
+	return 1;
 }

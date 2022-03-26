@@ -18,5 +18,5 @@ int StartFunction()
 			{CSinusFunc::FSinusFunc,"Синусоида"},
 			{CCosinFunc::FCosinFunc,"Косинусоида"}
 		});
-	return 0;
+	return 1;
 }

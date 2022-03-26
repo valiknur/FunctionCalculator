@@ -342,5 +342,5 @@ int simplefractions()
 		ONETIME
 	);
 	} while (menu_choise != 0);
-	return 0;
+	return 1;
 }
